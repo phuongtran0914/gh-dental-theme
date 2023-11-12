@@ -1,0 +1,10 @@
+{{!-- custom pagination file --}}
+
+<nav class="pagination" role="navigation">
+    {{#if prev}}
+    <a class="prev page-link" href="{{page_url prev}}">&larr; Prev</a>
+     {{/if}}
+     {{#if next}}
+     <a class="next page-link" href="{{page_url next}}">Next &rarr;</a>
+      {{/if}}
+</nav>

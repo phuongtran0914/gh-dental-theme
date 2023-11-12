@@ -1,0 +1,39 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
+
+{{> "carousel"}}
+
+{{> "about-us"}}
+
+{{> "our-services" }}
+
+{{> "offer"}}
+
+{{> "pricing" }}
+
+{{> "testimonial"}}
+
+{{> "team"}}
+
+<main class="gh-main">
+    <div class="blog container-fluid wow zoomIn p-5" data-wow-delay="0.3s">
+        <div class="container">
+            <div class="section-title row">
+                <h2 class="display-5">Bài viết mới nhất</h2>
+                <p>Hướng dẫn và chia sẻ kinh nghiệm chăm sóc sức khỏe răng miệng đến từ các bác sĩ, chuyên viên nha khoa đầu ngành</p>
+            </div>
+            <div class="row blog-row">
+                {{#get 'posts' limit=3}}
+                {{#foreach posts visibility='all'}}
+                <div class="col-md-4 py-3">
+                    <a href="{{url}}" class="blogcol">
+                    <img class="img-fluid" src="{{feature_image}}" alt="{{title}}">
+                    <h4>{{title}}</h4>
+                    </a>
+                </div>
+                {{/foreach}}
+                {{/get}}
+            </div>
+        </div>
+    </div>
+</main>

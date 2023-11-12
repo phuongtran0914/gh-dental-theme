@@ -1,0 +1,81 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
+
+
+<main class="gh-main">
+    <div class="container-fluid bg-primary py-5 hero-header">
+        <div class="row py-3">
+            <div class="col-12 text-center">
+                <a href="/" class="h4 text-white">Trang chủ</a>
+                <i class="fas fa-angle-right text-white px-2"></i>
+                <a href="/bai-viet" class="h4 text-white">Bài viết</a>
+            </div>
+        </div>
+    </div>
+
+    <article class="gh-article {{post_class}} py-5 px-3" style="max-width: 800px; margin-left: auto; margin-right: auto;">
+        {{#post}}
+        <header class="gh-article-header gh-canvas">
+            {{#if primary_tag}}
+                <a class="gh-article-tag" href="{{primary_tag.url}}">{{primary_tag.name}}</a>
+            {{/if}}
+            <h1 class="gh-article-title">{{title}}</h1>
+            {{#if custom_excerpt}}
+                <p class="gh-article-excerpt is-body">{{custom_excerpt}}</p>
+            {{/if}}
+
+            <div class="gh-article-meta">
+                <div class="gh-article-author-image">
+                    {{#foreach authors}}
+                        {{#if profile_image}}
+                            <a href="{{url}}">
+                                <img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}" />
+                            </a>
+                        {{else}}
+                            <a href="{{url}}">{{> "icons/avatar"}}</a>
+                        {{/if}}
+                    {{/foreach}}
+                </div>
+                <div class="gh-article-meta-wrapper">
+                    <h4 class="gh-article-author-name">{{authors}}</h4>
+                    <div class="gh-article-meta-content">
+                        <time class="gh-article-meta-date" datetime="{{date format="DD/MM/YYYY"}}">Đăng vào {{date format="DD/MM/YYYY"}}</time>
+                        {{#if reading_time}}
+                            <span class="gh-article-meta-length"><span class="bull">-</span> {{reading_time minute="Đọc khoảng 1 phút" minutes="Đọc khoảng % phút"}}</span>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <section>
+                    {{> "feature-image"}}
+                    {{content}}
+                </section>
+                {{/post}}
+            </div>
+            <div class="col-12 col-lg-4">
+                {{#get "posts" filter="id:-{{post.id}}" limit="5" as |next|}}
+                    {{#if next}}
+                        <div class="blog bg-white" data-wow-delay="0.3s">
+                            <div class="section-title row">
+                                <h6 class="display-6 d-lg-none">Bài viết liên quan</h6>
+                            </div>
+                            <div class="row blog-row related-blog">
+                                {{#foreach next}}
+                                <div class="col-12 mb-4">
+                                    <a href="{{url}}" class="blogcol">
+                                    <img class="img-fluid" src="{{feature_image}}" alt="{{title}}">
+                                    <h4>{{title}}</h4>
+                                    </a>
+                                </div>
+                                {{/foreach}}
+                            </div>
+                    </div>
+                    {{/if}}
+                {{/get}}
+            </div>
+        </div>
+    </article>
+</main>

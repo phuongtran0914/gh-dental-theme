@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}">
+<head>
+
+    {{!-- Basic meta - advanced meta is output with {{ghost_head}} below --}}
+    <title>{{meta_title}}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="origin">
+
+    <!-- Favicon -->
+    <link href="{{asset "images/favicon.ico"}}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    {{!-- <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">  --}}
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{{asset "lib/owlcarousel/assets/owl.carousel.min.css"}}" rel="stylesheet">
+    <link href="{{asset "lib/animate/animate.min.css"}}" rel="stylesheet">
+    <link href="{{asset "lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"}}" rel="stylesheet" />
+    <link href="{{asset "lib/twentytwenty/twentytwenty.css"}}" rel="stylesheet" />
+    <link href="https://vjs.zencdn.net/8.6.1/video-js.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/magnific-popup.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{asset "css/bootstrap.min.css"}}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{{asset "css/style.css"}}" rel="stylesheet">
+    
+    {{!-- This tag outputs all your advanced SEO meta, structured data, and other important settings,
+    it should always be the last tag before the closing head tag --}}
+    {{ghost_head}}
+
+</head>
+<body class="{{body_class}}">
+  <!-- Messenger Chat Plugin Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Chat Plugin code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "120430781163450");
+      chatbox.setAttribute("attribution", "install_email");
+      chatbox.setAttribute("attribution_version", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v18.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+  
+  <div class="gh-viewport">
+
+      {{> "components/loader"}}
+      
+      {{> "header" }}
+
+      {{{body}}}
+      
+      {{> "footer" }}
+
+  </div>
+
+
+  {{!-- JavaScript Libraries --}}
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{asset "lib/wow/wow.min.js"}}"></script>
+  <script src="{{asset "lib/easing/easing.min.js"}}"></script>
+  <script src="{{asset "lib/waypoints/waypoints.min.js"}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/jquery.magnific-popup.min.js"></script>
+  <script src="{{asset "lib/owlcarousel/owl.carousel.min.js"}}"></script>
+  <script src="{{asset "lib/tempusdominus/js/moment.min.js"}}"></script>
+  <script src="{{asset "lib/tempusdominus/js/moment-timezone.min.js"}}"></script>
+  <script src="{{asset "lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"}}"></script>
+  <script src="{{asset "lib/twentytwenty/jquery.event.move.js"}}"></script>
+  <script src="{{asset "lib/twentytwenty/jquery.twentytwenty.js"}}"></script>
+
+  {{!-- Template Javascript --}}
+  <script src="{{asset "js/main.js"}}"></script>
+
+  {{!-- Ghost outputs required functional scripts with this tag, it should always be the last thing before the closing body tag --}}
+  {{ghost_foot}}
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+{{!< default}} {{!-- The tag above means: insert everything in this file into the body of the default.hbs template --}}
+
+<main class="gh-main">
+    <div class="container-fluid bg-primary py-5 hero-header">
+        <div class="row py-3">
+            <div class="col-12 text-center">
+                <h1 class="display-3 text-white animated zoomIn">Bài viết của chúng tôi</h1>
+                <a href="/" class="h4 text-white">Trang chủ</a>
+                <i class="fas fa-angle-right text-white px-2"></i>
+                <a href="#" class="h4 text-white">Bài viết</a>
+            </div>
+        </div>
+    </div>
+    <div class="blog container-fluid wow fadeInUp bg-white mb-md-5" data-wow-delay="0.3s">
+        <div class="container">
+            <div class="row blog-row">
+                {{#foreach posts}}
+                <div class="col-12 col-md-4 py-3">
+                <a href="{{url}}" class="blogcol">
+                    <img class="img-fluid" src="{{feature_image}}" alt="{{title}}">
+                    <h4>{{title}}</h4>
+                </a>
+                </div>
+                {{/foreach}}
+            </div>
+            {{pagination}}
+        </div>
+    </div>
+</main>
